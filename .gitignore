@@ -3,3 +3,7 @@
 **/build
 **/target
 **/.gradle
+.settings
+.classpath
+.gitignore
+.project

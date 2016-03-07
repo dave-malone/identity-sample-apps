@@ -17,8 +17,11 @@ table, th, td {
 		var tokenJsonString = atob(tokenBase64);
 		var prettyToken = JSON.stringify(JSON.parse(tokenJsonString), null,
 				'  ');
+		
+		$('#jwt').text(fullTokenBase64);
 		$('#token').text(prettyToken);
-
+		
+		
 		var uaaLocation = /uaaLocation=([^&]+)/.exec(window.location.hash)[1];
 		$.ajax(uaaLocation + '/userinfo', {
 			headers : {
@@ -31,7 +34,8 @@ table, th, td {
 		});
 		$('#profile').attr('href', uaaLocation + '/profile');
 		$('#logout').attr('href', uaaLocation + '/logout.do');
-
+		$('#access').attr('href', '/access?access_token=' + fullTokenBase64);
+		$('#admin').attr('href', '/admin?access_token=' + fullTokenBase64);
 	});
 </script>
 </head>
@@ -40,6 +44,8 @@ table, th, td {
   <p>This is a static HTML page! The server only saw a request for /implicit.html. Everything after the # in the address bar is stuff that only your browser can see.</p>
   <p>Here's the result of calling /userinfo:</p>
   <pre id="userinfo"></pre>
+  <p>JWT:</p>
+  <pre id="jwt"></pre>
   <p>Your access token is:</p>
   <pre id="token"></pre>
   <h2>What do you want to do?</h2>
@@ -49,6 +55,12 @@ table, th, td {
     </li>
     <li>
       <a id="logout" target="uaa" href="#">Log out of UAA</a>
+    </li>
+    <li>
+      <a id="access" target="access" href="#">Access Page</a>
+    </li>
+    <li>
+      <a id="admin" target="admin" href="#">Admin Page</a>
     </li>
   </ul>
 </body>

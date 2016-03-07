@@ -23,3 +23,26 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.2.0.RELEASE'
     compile 'io.pivotal.spring.cloud:spring-cloud-sso-connector:1.1.0.RC1'
 }
+
+bootRun {
+	systemProperties System.properties
+//	systemProperty "spring.profiles.active", "cloud"
+//	environment "VCAP_APPLICATION", "implicit"
+	environment "SKIP_SSL_VALIDATION", "true"
+	environment "VCAP_SERVICES", '''
+	{
+	  "user-provided": [
+	   {
+	    "credentials": {
+		 "ssoServiceUrl":"http://localhost:8080/uaa",
+	     "jsecurity.oauth2.client.clientId": "client_id_placeholder"
+	    },
+	    "label": "user-provided",
+	    "name": "sso",
+	    "syslog_drain_url": "",
+	    "tags": []
+	   }
+	  ]
+	 }
+	'''
+}
