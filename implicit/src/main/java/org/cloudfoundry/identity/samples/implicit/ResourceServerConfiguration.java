@@ -20,11 +20,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http
-			.authorizeRequests()
-				.antMatchers("/access").access("#oauth2.hasScope('access')")
-				.antMatchers("/admin").access("#oauth2.hasScope('admin')")
-			.anyRequest().permitAll();
+		http.authorizeRequests().anyRequest().permitAll();
 	}
 
 	@Bean

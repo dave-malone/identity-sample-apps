@@ -3,6 +3,7 @@ package org.cloudfoundry.identity.samples.implicit;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.util.UrlUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,13 +31,16 @@ public class DefaultController {
     }
   
     
-    
+
     @RequestMapping("/access")
+    @PreAuthorize("#oauth2.hasScope('access')")
+    //full list of methods: http://docs.spring.io/spring-security/oauth/apidocs/org/springframework/security/oauth2/provider/expression/OAuth2SecurityExpressionMethods.html
     public String access(HttpServletRequest request, Model model) {
     	return "access";
     }
     
     @RequestMapping("/admin")
+    @PreAuthorize("#oauth2.hasScope('admin')")
     public String admin(HttpServletRequest request, Model model) {
     	return "admin";
     }
