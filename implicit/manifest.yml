@@ -1,9 +1,9 @@
 ---
 applications:
- - name: implicit-sample
-   memory: 512M
+ - name: oauth-implicit
+   memory: 1024M
    instances: 1
-   path: build/libs/implicit-2.0.1-SNAPSHOT.jar
+   path: build/libs/implicit-2.1.0.jar
    env:
      SKIP_SSL_VALIDATION: "true"
      GRANT_TYPE: implicit
