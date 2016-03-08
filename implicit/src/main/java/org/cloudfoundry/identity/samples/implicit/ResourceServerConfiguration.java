@@ -15,7 +15,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		resources.resourceId("oauth_showcase_implicit_grant");
+		resources.resourceId(null);
 	}
 
 	@Override
@@ -24,14 +24,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 			.authorizeRequests()
 				.antMatchers("/access").access("#oauth2.hasScope('access')")
 				.antMatchers("/admin").access("#oauth2.hasScope('admin')")
-			.anyRequest().permitAll(); //[4];
+			.anyRequest().permitAll();
 	}
 
 	@Bean
 	public ResourceServerTokenServices tokenServices(){
-//		DefaultTokenServices tokenServices = new DefaultTokenServices();
-//		tokenServices.setTokenEnhancer(new JwtAccessTokenConverter());
-//		tokenServices.setTokenStore(new InMemoryTokenStore());
 		RemoteTokenServices tokenServices = new RemoteTokenServices();
 		
 		tokenServices.setClientId("oauth_showcase_implicit_grant");
