@@ -7,6 +7,9 @@ server:
 spring:
   thymeleaf:
     cache: false
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
 security:
   ignored: /favicon.ico, /
   basic:
