@@ -30,20 +30,7 @@ public class DefaultController {
         return "index";
     }
   
-    
 
-    @RequestMapping("/access")
-    @PreAuthorize("#oauth2.hasScope('testaccess')")
-    //full list of methods: http://docs.spring.io/spring-security/oauth/apidocs/org/springframework/security/oauth2/provider/expression/OAuth2SecurityExpressionMethods.html
-    public String access(HttpServletRequest request, Model model) {
-    	return "access";
-    }
-    
-    @RequestMapping("/admin")
-    @PreAuthorize("#oauth2.hasScope('testadmin')")
-    public String admin(HttpServletRequest request, Model model) {
-    	return "admin";
-    }
     
 	
 }

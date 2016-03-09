@@ -34,8 +34,8 @@ table, th, td {
 		});
 		$('#profile').attr('href', uaaLocation + '/profile');
 		$('#logout').attr('href', uaaLocation + '/logout.do');
-		$('#access').attr('href', '/access?access_token=' + fullTokenBase64);
-		$('#admin').attr('href', '/admin?access_token=' + fullTokenBase64);
+		$('#access').attr('href', '/api/secured/access?access_token=' + fullTokenBase64);
+		$('#admin').attr('href', '/api/secured/admin?access_token=' + fullTokenBase64);
 	});
 </script>
 </head>
