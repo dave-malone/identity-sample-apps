@@ -1,4 +1,4 @@
-package org.cloudfoundry.identity.samples.implicit;
+package org.cloudfoundry.identity.samples.implicit.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;

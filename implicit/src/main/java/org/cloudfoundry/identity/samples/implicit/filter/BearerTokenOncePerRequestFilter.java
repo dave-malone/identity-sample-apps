@@ -1,4 +1,4 @@
-package org.cloudfoundry.identity.samples.implicit;
+package org.cloudfoundry.identity.samples.implicit.filter;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.authentication.BearerTokenExtractor;
@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by dan on 3/8/16.
+ * This filter looks to see whether the BearerTokenExtractor is able to extract a filter or not. If it isn't able to do so,
+ * then it clears the Spring SecurityContext. Either way, this filter does not halt processing of the FilterChain
+ * 
  */
 public class BearerTokenOncePerRequestFilter extends OncePerRequestFilter{
 

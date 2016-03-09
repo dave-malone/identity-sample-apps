@@ -1,4 +1,4 @@
-package org.cloudfoundry.identity.samples.implicit;
+package org.cloudfoundry.identity.samples.implicit.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
