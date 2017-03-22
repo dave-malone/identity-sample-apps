@@ -17,6 +17,10 @@ repositories {
     mavenCentral()
 }
 
+//configurations {
+//	compile.exclude module: "spring-boot-starter-tomcat"
+//}
+
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.cloud:spring-cloud-starter-oauth2'

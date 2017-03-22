@@ -23,3 +23,23 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.2.0.RELEASE'
     compile 'io.pivotal.spring.cloud:spring-cloud-sso-connector:1.1.0.RC1'
 }
+
+bootRun {
+	systemProperty "spring.profiles.active", "cloud"
+	environment "VCAP_APPLICATION", "authcode"
+	environment "VCAP_SERVICES", '''
+	{
+        "name": "test-sso",
+        "label": "p-identity",
+        "plan": "standard",
+        "tags": [
+            "configuration"
+        ],
+        "credentials": {
+            "auth_domain": "http://test.com",
+            "client_id": "config_client_id",
+            "client_secret": "its_a_secret_dont_tell"
+        }
+    }
+	'''
+}
